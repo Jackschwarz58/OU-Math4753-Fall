@@ -17,3 +17,79 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(JackPackage)
 ```
+
+# Introduction
+
+Welcome to my R Package! I made this package over the course of my Fall 2020 Semester at The University of Oklahoma as part of my Statistics class with Dr. Wayne Stewart. 
+
+This package, **JackPackage** (creatively named I know), contains three functions we have used in various labs, and one I made myself to help with ingesting data files. These functions are `mybin()`, `mycltu()`, `myci()`, and `myreadin()`.
+
+You can see the descriptions for each below, and I have included examples of these functions output for example, and I have made notes where necessary. 
+
+## How to Install
+
+The easiest way to install this package is from the remote GitHub repository. 
+
+<center> **The GitHub URL is https://github.com/Jackschwarz58/OU-Math4753-Fall** </center>
+
+1. Go to the package menu in the top right of R studio
+2. Click on 'New Package' and choose Git
+3. Paste in the GitHub URL from above and name the package 'JackPackage'
+4. call 'library(JackPackge) in your RMD or R file, and you are good to go!
+
+If you need any clarification regarding the package functions, call ?`function name` or refer back to this Vignette.
+
+# `myreadin()`
+
+This function is meant to take the small annoyance out of having to load in either a CSV or XLS and does the work for you. You pass in the file name WITHOUT the extension and the function will check if it exists, whether its a CSV or XLS, read it in, and return the data to be caught in a variable. If the file doesn't exist/can't be found, it spits out a File Not Found message with a sad face. Make sure the data is located in the **_caller file's_** current working directory.
+
+For example, if you are calling the file in `Example.rmd` the CSV/XLS file must be in the same directory as `Example.rmd`
+
+```{r eval=FALSE}
+csvEx <- JackPackage::myreadin('EXAMPLECSV')
+xlsEx <- JackPackage::myreadin('EXMAPLEXLS')
+```
+
+# `myci()`
+
+This function is designed to take in a data set and compute a confidence interval to the
+provided confidence level.
+
+_**Parameters**_
+
+* **x** The data to be used to compute the confidence interval
+* **conf** The confidence interval level as a decimal (i.e. 95 = .95). By default this function computes 95 unless specified otherwise
+
+```{r eval=FALSE}
+JackPackage::myci(c(1,5,9,3,7,1,6), conf=.75)
+```
+
+# `mybin()`
+
+This function is designed to designed to simulate a binomial experiment using the given parameters. These parameters include the number of iterations that are to be run, the desired sample size to be simulated, and a given probability.
+
+_**Parameters**_
+
+* **iter** The number of iterations to be run and simulated
+* **n** The simulated sample size
+* **p** The probability of success
+
+```{r eval=FALSE}
+JackPackage::mybin(iter=1000, n=10, p=.7)
+```
+
+# `mycltu()`
+
+This function takes in various parameters to compute the Central Limit Theorem based on a computed uniform random sample. This information is then overlaid graphically on a histogram, along with the sampling distribution that is then returned out of the function.
+
+_**Parameters**_
+
+* **n** The desired sample size
+* **iter** The number of iterations to run to compute the random sample
+* **a** The a value used to calculate the mean and variance for the theoretical curve
+* **b** The b value used to calculate the mean and variance for the theoretical curve
+
+```{r eval=FALSE}
+JackPackage::mycltu(25, 1000, 0, 5)
+```
+
