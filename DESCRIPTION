@@ -1,0 +1,19 @@
+Package: JackPackage
+Title: Package For Statistics
+Version: 0.1.0
+Authors@R: 
+    person(given = "Jack",
+           family = "Schwarz",
+           role = c("aut", "cre"),
+           email = "jackschwarz58@ou.edu",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: A package I made as part of my Fall 2020 Statistics class at the University of Oklahoma. This was my second attempt at redoing this package because my last one was disgusting.
+License: use_mit_license()
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
